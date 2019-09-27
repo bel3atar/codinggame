@@ -38,9 +38,9 @@ class Example extends Component {
         <i>Use keys Up and Down to select an entry, then use Enter !</i>
         <ul class='menu'>
           {this.data.map(({ icon, text }) =>
-            <li class={`menu-item ${this.focusableClass}`}>
-              <i class={`fas fa-${icon}`}></i>
-              <span class='menu-text'>{text}</span>
+            <li className={`menu-item ${this.focusableClass}`}>
+              <i className={`fas fa-${icon}`}></i>
+              <span className='menu-text'>{text}</span>
             </li>
           )}
         </ul>
