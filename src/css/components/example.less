@@ -1,5 +1,5 @@
 .text-label() {
-  color: grey;
+  color: #535c68;
 }
 
 .example {
@@ -10,7 +10,7 @@
     margin: 5px 0;
   }
 
-  animation-name: example;
+  // animation-name: example;
   animation-duration: 0.75s;
   animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -21,6 +21,7 @@
   border-color: transparent;
   padding: 5px 10px;
   transition: 0.3s ease;
+  color: #535c68;
   &:not(:last-child) {
     margin-bottom: 10px;
   }
@@ -30,7 +31,7 @@
   }
   &.hasFocus {
     // border-color: white;
-    
+    color: white;
   }
 }
 
@@ -40,6 +41,8 @@
   height: 38px;
   width: 100%;
   box-sizing: border-box;
+  top: 0;
+  transition: 0.5s ease;
 }
 
 .menu {

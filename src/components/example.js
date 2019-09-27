@@ -49,7 +49,7 @@ class Example extends Component {
               <span className='menu-text'>{text}</span>
             </li>
           )}
-          <li className='menu-item-selector' style={{ top: this.current * 38 }}/>
+          {(this.selector = <li className='menu-item-selector'/>)}
         </ul>
       </div>
     )
@@ -65,6 +65,7 @@ class Example extends Component {
     Connector.rpc('stop')
     const item = this.data[this.current]
     if (item.onTiemout) item.onTiemout()
+    this.moveSelector(this.current)
   }
   // Keys
 
@@ -81,6 +82,10 @@ class Example extends Component {
     if (next === max) return
     this.focus(next)
     this.checkTimeout()
+  }
+
+  moveSelector (value) {
+    this.selector.style.transform = `translateY(${value * 48}px)`
   }
 
   onKeyEnter () {
