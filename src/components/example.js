@@ -24,7 +24,7 @@ class Example extends Component {
   render () {
     return (
       <div className="example">
-        <h1 className="example-title">Star WARS<i className='fas fa-thumbs-up' /></h1>
+        <h1 className="example-title">Star Wars</h1>
         <img className="logo" src="https://via.placeholder.com/400x150" />
         <div className='section-info headband'>
           <span className='suggest'>Suggéré à 79%</span>
@@ -50,7 +50,7 @@ class Example extends Component {
               <span className='menu-text'>{text}</span>
             </li>
           )}
-          <li className='menu-item-selector' style={{ top: this.current * 38 }}/>
+          {(this.selector = <li className='menu-item-selector'/>)}
         </ul>
       </div>
     )
@@ -66,6 +66,7 @@ class Example extends Component {
     Connector.rpc('stop')
     const item = this.data[this.current]
     if (item.onTiemout) item.onTiemout()
+    this.moveSelector(this.current)
   }
   // Keys
 
@@ -82,6 +83,10 @@ class Example extends Component {
     if (next === max) return
     this.focus(next)
     this.checkTimeout()
+  }
+
+  moveSelector (value) {
+    this.selector.style.transform = `translateY(${value * 48}px)`
   }
 
   onKeyEnter () {
