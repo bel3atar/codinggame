@@ -9,7 +9,7 @@ function createServer (opts) {
   if (config instanceof Error) return console.error(config.message)
   const options = {
     port: PORT,
-    host: 'localhost',
+    host: '0.0.0.0',
     hot: true,
     quiet: true,
     overlay: true,

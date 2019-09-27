@@ -25,7 +25,6 @@ class Example extends Component {
     return (
       <div className="example">
         <h1 className="example-title">Star WARS<i className='fas fa-thumbs-up' /></h1>
-        <img className="logo" src="https://via.placeholder.com/400x150" />
         <div className='section-info headband'>
           <span className='suggest'>Suggéré à 79%</span>
           <span className='year'>2022</span>
