@@ -82,7 +82,7 @@ class Example extends Component {
       this.timeout = setTimeout(() => {
         const app = document.getElementById('app')
         app.classList.add('transparent')
-      }, 2000)
+      }, 3000)
     }
   }
 
