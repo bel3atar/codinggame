@@ -1,10 +1,20 @@
 import { Component, h, Router } from 'splay'
-import MyStore from '@stores/mystore'
+import Connector from '../connector'
 import '@css/components/example.less'
-
+const VIDEO_TIMEOUT = 1000
 class Example extends Component {
-  getData () {
-    return MyStore.getSampleData().then(data => { this.data = data })
+  launchVideo () {
+    console.log('launchVideo called')
+    this.timeout = window.setTimeout(
+      () => Connector.rpc('play', { channelId: 313 }, (a, b) => console.log(a, b)),
+      VIDEO_TIMEOUT)
+  }
+
+  init () {
+    this.data = [
+      { text: '▶ Lire', onTiemout: this.launchVideo.bind(this) },
+      { text: '➕ Ajouter aux favori' }
+    ]
   }
 
   get dataToSave () {
@@ -15,7 +25,7 @@ class Example extends Component {
     const arr = []
     for (let i = 0, lgt = this.data.length; i < lgt; i++) {
       arr.push(
-        <div className={['example-element', this.focusableClass]}>{this.data[i].name}</div>
+        <div className={['example-element', this.focusableClass]}>{this.data[i].text}</div>
       )
     }
     return arr
@@ -32,12 +42,32 @@ class Example extends Component {
   }
 
   // Hooks
-  mounted () { this.focus(this.current) }
+  mounted () {
+    this.focus(this.current)
+    this.checkTimeout()
+  }
 
+  checkTimeout () {
+    Connector.rpc('stop')
+    const item = this.data[this.current]
+    if (item.onTiemout) item.onTiemout()
+  }
   // Keys
-  onKeyUp () { this.focus(this.current - 1) }
 
-  onKeyDown () { this.focus(this.current + 1) }
+  onKeyUp () {
+    if (this.current === 0) return
+    const next = this.current - 1
+    this.focus(next)
+    this.checkTimeout()
+  }
+
+  onKeyDown () {
+    const max = this.data.length
+    const next = this.current + 1
+    if (next === max) return
+    this.focus(next)
+    this.checkTimeout()
+  }
 
   onKeyEnter () {
     if (this.data[this.current]) return Router.navigate('detail', { data: this.data[this.current] })
