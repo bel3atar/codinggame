@@ -24,31 +24,33 @@ class Example extends Component {
   render () {
     return (
       <div className="example">
-        <h1 className="example-title">Star WARS <i className='fas fa-thumbs-up' /></h1>
-        <img src="https://via.placeholder.com/400x200" />
-        <div className='headband'>
+        <h1 className="example-title">Star WARS<i className='fas fa-thumbs-up' /></h1>
+        <img className="logo" src="https://via.placeholder.com/400x150" />
+        <div className='section-info headband'>
           <span className='suggest'>Suggéré à 79%</span>
           <span className='year'>2022</span>
           <span className='csa'>13+</span>
           <span className='duration'>1h30min</span>
-          <span classname='quality'>HD</span>
+          <span className='quality'>HD</span>
         </div>
-        <div className='synopsis'>
+        <div className='section-info synopsis'>
           Dans une tour à Paris, deux laveurs de vitres se chamaillent déjouent
           malgré eux un coup monté pour dérober un puissant tycoon lors d'une
           fausse prise d'otage.
         </div>
-        <div className='extra-info'>
-          <span>Distribution: Éric Judor, Marina Foïs, Serge Riaboukine</span>
-          <span>Réalisateur: Charles Nemes</span>
-          <span>Comédies, Comédies françaises</span>
+        <div className='section-info extra-info'>
+          <p><span className="label">Distribution:</span> Éric Judor, Marina Foïs, Serge Riaboukine</p>
+          <p><span className="label">Réalisateur:</span> Charles Nemes</p>
+          <p>Comédies, Comédies françaises</p>
         </div>
-        <ul class='menu'>
+        <ul className='menu'>
           {this.data.map(({ icon, text }) =>
             <li className={`menu-item ${this.focusableClass}`}>
-              <i className={`fas fa-${icon}`} / >
+              <i className={`fas fa-${icon}`} />
               <span className='menu-text'>{text}</span>
-            </li>)}
+            </li>
+          )}
+          <li className='menu-item-selector' style={{ top: this.current * 38 }}/>
         </ul>
       </div>
     )
