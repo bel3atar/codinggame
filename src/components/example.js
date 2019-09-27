@@ -12,8 +12,8 @@ class Example extends Component {
 
   init () {
     this.data = [
-      { text: '▶ Lire', onTiemout: this.launchVideo.bind(this) },
-      { text: '➕ Ajouter aux favori' }
+      { icon: 'play', text: 'Lire', onTiemout: this.launchVideo.bind(this) },
+      { icon: 'plus', text: 'Ajouter aux favori' }
     ]
   }
 
@@ -34,9 +34,16 @@ class Example extends Component {
   render () {
     return (
       <div className="example">
-        <h1 className="example-title">Welcome on Demo app !</h1>
+        <h1 className="example-title">Star WARS</h1>
         <i>Use keys Up and Down to select an entry, then use Enter !</i>
-        { this.getList() }
+        <ul class='menu'>
+          {this.data.map(({ icon, text }) =>
+            <li class={`menu-item ${this.focusableClass}`}>
+              <i class={`fas fa-${icon}`}></i>
+              <span class='menu-text'>{text}</span>
+            </li>
+          )}
+        </ul>
       </div>
     )
   }
