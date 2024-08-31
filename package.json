@@ -86,7 +86,7 @@
     "pem": "^1.14.3",
     "style-loader": "^1.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.39.3",
+    "webpack": "^5.94.0",
     "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
